@@ -1,3 +1,6 @@
+#include <WiFiUdp.h> // before lwip RE: https://github.com/espressif/arduino-esp32/issues/4405
+#include <lwip/sockets.h>
+
 #include "esp_camera.h"
 #include "esp_http_client.h"
 #include <WiFi.h>
@@ -346,6 +349,8 @@ static esp_err_t save_photo_dated()
   /* */
   esp_camera_fb_return(fb);
   free(filename);
+
+  return 1;
 }
 
 void save_photo()
